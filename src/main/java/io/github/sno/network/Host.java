@@ -1,4 +1,4 @@
-package io.github.sno.domain.network;
+package io.github.sno.network;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ public class Host {
     }
 
     public static Host from(String ip) {
-        Integer[] arr = Arrays.stream(ip.split(".")).map(Integer::parseInt).toArray(Integer[]::new);
+        int[] arr = Arrays.stream(ip.split("\\.")).mapToInt(Integer::parseInt).toArray();
 
         return new Host(arr[0], arr[1], arr[2], arr[3]);
     }

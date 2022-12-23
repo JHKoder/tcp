@@ -1,4 +1,4 @@
-package io.github.sno.monitor;
+package io.github.sno.network;
 
 public enum NetStatus {
     TIMEOUT,
