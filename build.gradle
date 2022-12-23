@@ -9,7 +9,7 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 
 group = 'io.github'
-version = '0.1.5'
+version = '0.1.6'
 sourceCompatibility = '17'
 
 repositories {
