@@ -8,18 +8,30 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
-group = 'io.github'
-version = '0.1.9'
+group = 'com.github.oiNeh'
+version = '0.1.10'
 sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
 }
 
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+
 allprojects {
     repositories {
         jcenter()
-        maven { url "https://jitpack.io" }
+        maven {  url "https://jitpack.io" }
     }
 }
 dependencies {
@@ -37,17 +49,6 @@ tasks.named('test') {
 java {
     withSourcesJar()
     withJavadocJar()
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from components.java
-        }
-    }
-    tasks.withType(Javadoc) {
-        options.addStringOption('Xdoclint:none', '-quiet')
-    }
 }
 
 wrapper {
