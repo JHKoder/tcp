@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.5'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
 }
 
 group = 'io.github'
@@ -9,15 +9,9 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
-allprojects {
-    repositories {
-        jcenter()
-        maven { url "https://jitpack.io" }
-    }
-}
 
 dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -27,5 +21,17 @@ dependencies {
 
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
+}
+
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+
+wrapper {
+    gradleVersion = "7.5.1"
+    distributionType = Wrapper.DistributionType.ALL
 }
