@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'io.github'
-version = '0.0.1-SNAPSHOT'
+version = '0.1.6'
 sourceCompatibility = '17'
 
 repositories {
