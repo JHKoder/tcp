@@ -1,21 +1,14 @@
-
-plugins {
-    id 'org.springframework.boot' version '2.7.5'
-    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-    id 'java'
-}
-
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
 group = 'com.github.oiNeh'
-version = '0.1.10'
-sourceCompatibility = '17'
+version = '0.1.11'
+sourceCompatibility = 17
+targetCompatibility = 17
 
 repositories {
     mavenCentral()
 }
-
 
 publishing {
     publications {
@@ -23,32 +16,13 @@ publishing {
             from components.java
         }
     }
-    tasks.withType(Javadoc) {
-        options.addStringOption('Xdoclint:none', '-quiet')
-    }
 }
 
 allprojects {
     repositories {
         jcenter()
-        maven {  url "https://jitpack.io" }
+        maven { url "https://jitpack.io" }
     }
-}
-dependencies {
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-}
-
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
-
-java {
-    withSourcesJar()
-    withJavadocJar()
 }
 
 wrapper {

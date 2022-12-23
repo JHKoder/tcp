@@ -3,7 +3,6 @@ package io.github.sno.network.tcp;
 import io.github.sno.network.Host;
 import io.github.sno.network.NetProtocal;
 import io.github.sno.network.NetStatus;
-import lombok.Getter;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -12,10 +11,13 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 
 
-@Getter
 public class Tcp implements NetProtocal {
 
     protected Socket socket;
+
+    public Socket getSocket() {
+        return socket;
+    }
 
     public void shutdownSocket() {
         try {
