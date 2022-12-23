@@ -1,8 +1,12 @@
+
 plugins {
     id 'org.springframework.boot' version '2.7.5'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'java'
 }
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 group = 'io.github'
 version = '0.0.1-SNAPSHOT'
@@ -30,6 +34,13 @@ java {
     withJavadocJar()
 }
 
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
 
 wrapper {
     gradleVersion = "7.5.1"
