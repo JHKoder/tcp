@@ -40,6 +40,9 @@ publishing {
             from components.java
         }
     }
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
 }
 
 wrapper {
