@@ -31,4 +31,20 @@ public class Monitoring {
         return status;
     }
 
+    /** 프로토콜 각 연결 가능 여부 */
+    public NetProtocolType connectNetProtocol(NetProtocolDto dto) {
+        NetProtocolType netProtocolType = new NetProtocolType();
+        if (IcmpStatus(dto.getHost()) == NetStatus.OK) {
+            netProtocolType.updateIcmp(true);
+        }
+        if (TcpStatus(dto.getUrl()) == NetStatus.OK) {
+            netProtocolType.updateTcpUrl(true);
+        }
+        if (TcpStatus(dto.getHost(),dto.getPort()) == NetStatus.OK) {
+            netProtocolType.updateTcpPort(true);
+        }
+        return netProtocolType;
+    }
+
+
 }
