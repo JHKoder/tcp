@@ -18,7 +18,7 @@ public class NetProtocolDto {
         return new NetBuilder().builder();
     }
 
-    private static class NetBuilder {
+    public static class NetBuilder {
 
         private Host host;
         private String url;
