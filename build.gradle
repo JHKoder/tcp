@@ -2,9 +2,9 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 
 group = 'com.github.oiNeh'
-version = '0.1.14'
-sourceCompatibility = 17
-targetCompatibility = 17
+version = '0.1.15'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -23,6 +23,16 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
     }
+}
+dependencies {
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
 
 wrapper {
