@@ -13,14 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class NetWorkTest {
 
-    @Test
-    void se(){
-        String url = "https://naver.com://";
-        System.out.println(url.indexOf("://"));
-        System.out.println(url.split("://")[1]);
-        String url2 = "naver.com";
-        System.out.println(url2.indexOf("://")==-1);
-    }
+
     @Test
     void TCP_url_연결() {
         Tcp tcp = new Tcp.Url("https://naver.com");
