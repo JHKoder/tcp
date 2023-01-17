@@ -1,10 +1,10 @@
 package io.github.sno.monitoring;
 
-import io.github.sno.network.Host;
-import io.github.sno.network.NetStatus;
-import io.github.sno.network.NetWork;
-import io.github.sno.network.icmp.Icmp;
-import io.github.sno.network.tcp.Tcp;
+import io.github.tcp.network.Host;
+import io.github.tcp.network.NetStatus;
+import io.github.tcp.network.NetWork;
+import io.github.tcp.network.icmp.Icmp;
+import io.github.tcp.network.tcp.Tcp;
 import org.junit.jupiter.api.Test;
 
 import java.net.Socket;

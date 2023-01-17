@@ -1,8 +1,8 @@
-package io.github.sno.network.tcp;
+package io.github.tcp.network.tcp;
 
-import io.github.sno.network.Host;
-import io.github.sno.network.NetProtocal;
-import io.github.sno.network.NetStatus;
+import io.github.tcp.network.Host;
+import io.github.tcp.network.NetProtocal;
+import io.github.tcp.network.NetStatus;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
