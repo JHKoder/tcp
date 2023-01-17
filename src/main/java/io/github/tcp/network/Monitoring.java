@@ -1,7 +1,7 @@
-package io.github.sno.network;
+package io.github.tcp.network;
 
-import io.github.sno.network.icmp.Icmp;
-import io.github.sno.network.tcp.Tcp;
+import io.github.tcp.network.icmp.Icmp;
+import io.github.tcp.network.tcp.Tcp;
 
 
 public class Monitoring {
