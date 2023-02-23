@@ -26,12 +26,10 @@ public class Tcp implements NetProtocal {
         }
     }
 
-
     @Override
     public NetStatus connect() {
         throw new IllegalArgumentException("TCP/IP 요청 타입을 알수 없습니다.");
     }
-
 
     public static class Port extends Tcp {
         private final Host host;
@@ -44,8 +42,9 @@ public class Tcp implements NetProtocal {
 
         public NetStatus connect() {
             try {
-                socket =new Socket();
+                socket = new Socket();
                 socket.connect(new InetSocketAddress(host.toString(), port), 10_000);
+                shutdownSocket();
                 return NetStatus.OK;
             } catch (SocketTimeoutException ignored) {
                 shutdownSocket();
@@ -55,7 +54,6 @@ public class Tcp implements NetProtocal {
                 return NetStatus.NOT_CONNECT;
             }
         }
-
     }
 
     public static class Url extends Tcp {
@@ -74,7 +72,5 @@ public class Tcp implements NetProtocal {
                 return NetStatus.NOT_CONNECT;
             }
         }
-
     }
-
 }
