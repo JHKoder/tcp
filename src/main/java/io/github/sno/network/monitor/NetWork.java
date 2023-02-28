@@ -1,4 +1,6 @@
-package io.github.sno.network;
+package io.github.sno.network.monitor;
+
+import io.github.sno.network.NetStatus;
 
 public class NetWork<T extends NetProtocal>{
     private final T net;

@@ -1,7 +1,7 @@
-package io.github.sno.network.tcp;
+package io.github.sno.network.monitor.tcp;
 
 import io.github.sno.network.Host;
-import io.github.sno.network.NetProtocal;
+import io.github.sno.network.monitor.NetProtocal;
 import io.github.sno.network.NetStatus;
 
 import java.io.IOException;
@@ -54,7 +54,6 @@ public class Tcp implements NetProtocal {
                 return NetStatus.NOT_CONNECT;
             }
         }
-
     }
 
     public static class Url extends Tcp {

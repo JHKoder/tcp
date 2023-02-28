@@ -1,6 +1,7 @@
 package io.github.sno.network;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Host {
     private final int classA;
@@ -22,15 +23,23 @@ public class Host {
         return new Host(arr[0], arr[1], arr[2], arr[3]);
     }
 
+    public String toString() {
+        return classA + "." + classB + "." + classC + "." + classD;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Host){
+            return Objects.equals(this.toString(), obj.toString());
+        }
+        return false;
+    }
+
     private void valid() {
         validateRange(classA);
         validateRange(classB);
         validateRange(classC);
         validateRange(classD);
-    }
-
-    public String toString() {
-        return classA + "." + classB + "." + classC + "." + classD;
     }
 
     private void validateRange(int address) {

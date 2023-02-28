@@ -1,5 +1,7 @@
-package io.github.sno.network;
+package io.github.sno.network.monitor;
 
+
+import io.github.sno.network.Host;
 
 public class NetProtocolDto {
     private Host host;
