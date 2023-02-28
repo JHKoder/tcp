@@ -1,8 +1,7 @@
-package io.github.sno.network;
+package io.github.sno.network.monitor;
 
 public enum NetStatus {
     TIMEOUT,
     NOT_CONNECT,
-    OK
-
+    OK;
 }

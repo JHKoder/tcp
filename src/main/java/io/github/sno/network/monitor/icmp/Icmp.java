@@ -1,8 +1,16 @@
+<<<<<<<< HEAD:src/main/java/io/github/sno/network/monitor/icmp/Icmp.java
 package io.github.sno.network.monitor.icmp;
 
 import io.github.sno.network.Host;
 import io.github.sno.network.monitor.NetProtocal;
 import io.github.sno.network.NetStatus;
+========
+package io.github.tcp.network.icmp;
+
+import io.github.tcp.network.Host;
+import io.github.tcp.network.NetProtocal;
+import io.github.tcp.network.NetStatus;
+>>>>>>>> main:src/main/java/io/github/tcp/network/icmp/Icmp.java
 
 import java.io.IOException;
 import java.net.InetAddress;
