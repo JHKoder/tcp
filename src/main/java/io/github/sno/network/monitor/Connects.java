@@ -1,7 +1,5 @@
 package io.github.sno.network.monitor;
 
-import io.github.sno.network.NetStatus;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
@@ -48,18 +46,14 @@ public class Connects {
             pool.execute(connectTcpUrlTask::start);
             pool.execute(connectPortTask::start);
 
-            threadPoolWaiting(pool);
+            pool.shutdown();
+            while (!pool.isTerminated()) { }
 
             netTypes.add(connectIcmpTask.getNetType());
             netTypes.add(connectTcpUrlTask.getNetType());
             netTypes.add(connectPortTask.getNetType());
 
             return netTypes;
-        }
-
-        private void threadPoolWaiting(ExecutorService pool) {
-            pool.shutdown();
-            while (!pool.isTerminated()) { }
         }
     }
 

@@ -1,11 +1,4 @@
-<<<<<<<< HEAD:src/main/java/io/github/sno/network/monitor/NetProtocolDto.java
 package io.github.sno.network.monitor;
-========
-package io.github.tcp.network;
->>>>>>>> main:src/main/java/io/github/tcp/network/NetProtocolDto.java
-
-
-import io.github.sno.network.Host;
 
 public class NetProtocolDto {
     private Host host;

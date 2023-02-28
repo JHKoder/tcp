@@ -1,4 +1,4 @@
-package io.github.tcp.network;
+package io.github.sno.network.monitor;
 
 public class Main {
     public static void main(String[] args) {
