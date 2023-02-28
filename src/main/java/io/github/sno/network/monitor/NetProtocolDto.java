@@ -1,5 +1,4 @@
-package io.github.tcp.network;
-
+package io.github.sno.network.monitor;
 
 public class NetProtocolDto {
     private Host host;

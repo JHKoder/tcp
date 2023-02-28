@@ -1,4 +1,4 @@
-package io.github.tcp.network;
+package io.github.sno.network.monitor;
 
 public class NetWork<T extends NetProtocal>{
     private final T net;

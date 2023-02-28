@@ -1,8 +1,8 @@
-package io.github.tcp.network.icmp;
+package io.github.sno.network.monitor.icmp;
 
-import io.github.tcp.network.Host;
-import io.github.tcp.network.NetProtocal;
-import io.github.tcp.network.NetStatus;
+import io.github.sno.network.monitor.Host;
+import io.github.sno.network.monitor.NetProtocal;
+import io.github.sno.network.monitor.NetStatus;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -21,7 +21,6 @@ public class Icmp implements NetProtocal {
             return NetStatus.NOT_CONNECT;
         }
     }
-
 
     private NetStatus connect(InetAddress inetAddress) throws IOException {
         if (inetAddress.isReachable(10_000)) {
