@@ -23,7 +23,7 @@ public class Icmp implements NetProtocal {
     }
 
     private NetStatus connect(InetAddress inetAddress) throws IOException {
-        if (inetAddress.isReachable(10_000)) {
+        if (inetAddress.isReachable(5_000)) {
             return NetStatus.OK;
         } else {
             return NetStatus.TIMEOUT;

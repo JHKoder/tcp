@@ -43,7 +43,7 @@ public class Tcp implements NetProtocal {
         public NetStatus connect() {
             try {
                 socket = new Socket();
-                socket.connect(new InetSocketAddress(host.toString(), port), 10_000);
+                socket.connect(new InetSocketAddress(host.toString(), port), 5_000);
                 shutdownSocket();
                 return NetStatus.OK;
             } catch (SocketTimeoutException ignored) {
