@@ -1,5 +1,6 @@
 package io.github.sno.network.monitor;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
@@ -40,14 +41,7 @@ public class Connects {
         }
 
         public Set<NetType> connect() {
-            ExecutorService pool = Executors.newFixedThreadPool(3);
-
-            pool.execute(connectIcmpTask::start);
-            pool.execute(connectTcpUrlTask::start);
-            pool.execute(connectPortTask::start);
-
-            pool.shutdown();
-            while (!pool.isTerminated()) { }
+            threadPoolLife(connectIcmpTask, connectTcpUrlTask, connectPortTask);
 
             netTypes.add(connectIcmpTask.getNetType());
             netTypes.add(connectTcpUrlTask.getNetType());
@@ -55,9 +49,24 @@ public class Connects {
 
             return netTypes;
         }
+
+        private void threadPoolLife(Runnable... tasks) {
+            ExecutorService pool = Executors.newFixedThreadPool(3);
+
+            Arrays.stream(tasks).forEach(pool::execute);
+
+            shutdown(pool);
+        }
+
+        private void shutdown(ExecutorService pool){
+            pool.shutdown();
+            while (!pool.isTerminated()) {
+                //ignore
+            }
+        }
     }
 
-    private static class ConnectIcmpTask extends Thread {
+    private static class ConnectIcmpTask implements Runnable {
         private final TaskHandler taskHandler;
         private final Connect connect;
         private final NetProtocolDto dto;
@@ -77,6 +86,7 @@ public class Connects {
             return taskHandler.netType;
         }
 
+
         private class TaskHandler {
             private NetType netType;
 
@@ -88,7 +98,7 @@ public class Connects {
         }
     }
 
-    private static class ConnectTcpUrlTask extends Thread {
+    private static class ConnectTcpUrlTask  implements Runnable {
         private final TaskHandler taskHandler;
         private final Connect connect;
         private final NetProtocolDto dto;
@@ -119,7 +129,7 @@ public class Connects {
         }
     }
 
-    private static class ConnectPortTask extends Thread {
+    private static class ConnectPortTask implements Runnable {
         private final TaskHandler taskHandler;
         private final Connect connect;
         private final NetProtocolDto dto;
