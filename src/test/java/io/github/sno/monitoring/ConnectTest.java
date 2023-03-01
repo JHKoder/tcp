@@ -1,7 +1,7 @@
 package io.github.sno.monitoring;
 
-import io.github.sno.network.Host;
-import io.github.sno.network.NetStatus;
+import io.github.sno.network.monitor.Host;
+import io.github.sno.network.monitor.NetStatus;
 import io.github.sno.network.monitor.NetWork;
 import io.github.sno.network.monitor.icmp.Icmp;
 import io.github.sno.network.monitor.tcp.Tcp;
