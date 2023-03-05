@@ -1,4 +1,4 @@
-package io.github.sno.network.monitor;
+package io.github.sno.network.monitor.tcpip;
 
 import java.util.Arrays;
 import java.util.Objects;
