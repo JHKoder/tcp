@@ -25,5 +25,4 @@ public class Tcp implements TcpIpProtocal {
     public NetStatus connect() {
         throw new IllegalArgumentException("TCP/IP 요청 타입을 알수 없습니다.");
     }
-
 }

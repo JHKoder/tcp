@@ -16,7 +16,6 @@ public class Icmp implements TcpIpProtocal , Task {
         this.host = host;
     }
 
-
     /** Icmp 프로토콜의 연결 확인  */
     public NetStatus connect() {
         try {
