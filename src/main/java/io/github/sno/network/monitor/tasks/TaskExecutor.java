@@ -1,32 +1,32 @@
 package io.github.sno.network.monitor.tasks;
 
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class TaskExecutor {
 
-    public static <T extends TaskResultDator> HashSet<TaskResultDator> async(Task... tasks) {
 
-        CompletableFuture<HashSet<TaskResultDator>> taskFuture =
-                CompletableFuture.supplyAsync(HashSet::new);
+    public static <T extends TaskResultDator<R>, R> HashMap<Task, R> async(Task... tasks) {
+
+        CompletableFuture<HashMap<Task, R>> taskFuture = CompletableFuture.supplyAsync(HashMap::new);
 
         Arrays.stream(tasks).forEach(task -> {
-            taskFuture.thenApply(set -> {
-                set.add(T.of(task, task.job()));
-                return set;
+            taskFuture.thenApply(map -> {
+                map.put(task, (R) task.job());
+                return map;
             });
         });
 
         return getFuture(taskFuture);
     }
 
-    private static HashSet<TaskResultDator> getFuture(CompletableFuture<HashSet<TaskResultDator>> taskFuture) {
+    private static <T extends TaskResultDator<R>, R> HashMap<Task, R> getFuture(CompletableFuture<HashMap<Task, R>> taskFuture) {
         try {
             return taskFuture.get();
         } catch (ExecutionException | InterruptedException e) {
-            return new HashSet<>();
+            return new HashMap<>();
         }
     }
 }
