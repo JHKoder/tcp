@@ -13,10 +13,6 @@ public class NetTaskDator implements TaskResultDator {
         this.data = (NetStatus) data;
     }
 
-    public TaskResultDator of(Task task, TaskResultData data) {
-        return new NetTaskDator(task,data);
-    }
-
     @Override
     public boolean equalsTask(Task task) {
         return this.task.equals(task);

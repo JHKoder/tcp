@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 public class TaskExecutor {
 
 
-    public static <T extends TaskResultDator<R>, R> HashMap<Task, R> async(Task... tasks) {
+    public static <R> HashMap<Task, R> async(Task... tasks) {
 
         CompletableFuture<HashMap<Task, R>> taskFuture = CompletableFuture.supplyAsync(HashMap::new);
 
@@ -22,7 +22,7 @@ public class TaskExecutor {
         return getFuture(taskFuture);
     }
 
-    private static <T extends TaskResultDator<R>, R> HashMap<Task, R> getFuture(CompletableFuture<HashMap<Task, R>> taskFuture) {
+    private static <R> HashMap<Task, R> getFuture(CompletableFuture<HashMap<Task, R>> taskFuture) {
         try {
             return taskFuture.get();
         } catch (ExecutionException | InterruptedException e) {
