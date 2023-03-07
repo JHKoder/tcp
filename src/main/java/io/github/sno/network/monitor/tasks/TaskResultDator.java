@@ -1,8 +1,9 @@
 package io.github.sno.network.monitor.tasks;
 
-public interface TaskResultDator {
+public interface TaskResultDator<R> {
 
-    static TaskResultDator of(Task task, TaskResultData data) {
-        throw new ClassCastException("");
-    }
+    <T extends TaskResultDator<R>> T of(Task task, TaskResultData data);
+
+    boolean equalsTask(Task http);
+
 }
