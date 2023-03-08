@@ -1,28 +1,31 @@
-package io.github.sno.network.monitor.tcpip.internet;
+package io.github.oineh.net.tcpip.iso.internet;
 
-import io.github.sno.network.monitor.tasks.Task;
-import io.github.sno.network.monitor.tasks.TaskResultData;
-import io.github.sno.network.monitor.tcpip.Host;
-import io.github.sno.network.monitor.tcpip.NetStatus;
+import io.github.oineh.net.tcpip.Host;
+import io.github.oineh.net.tcpip.NetStatus;
+import io.github.oineh.net.tcpip.iso.IsoConnect;
+import io.github.oineh.net.tcpip.iso.TcpIpProtocal;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
-public class Port extends Tcp implements Task {
+
+public class Tcp  implements TcpIpProtocal, IsoConnect {
+
+    private final Socket socket;
     private final Host host;
     private final int port;
 
-    public Port(Host host, int port) {
+    public Tcp(Host host, int port) {
+        this.socket = new Socket();
         this.host = host;
         this.port = port;
     }
 
-    /** TCP 프로코콜의 port 연결 확인  */
-    public NetStatus connect() {
+    @Override
+    public NetStatus connectStatus() {
         try {
-            socket = new Socket();
             socket.connect(new InetSocketAddress(host.toString(), port), 1_000);
             shutdownSocket();
             return NetStatus.OK;
@@ -35,8 +38,10 @@ public class Port extends Tcp implements Task {
         }
     }
 
-    @Override
-    public TaskResultData job() {
-        return connect();
+    public void shutdownSocket() {
+        try {
+            socket.close();
+        } catch (IOException ignored) {
+        }
     }
 }

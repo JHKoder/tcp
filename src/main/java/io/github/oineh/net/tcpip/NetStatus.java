@@ -1,6 +1,6 @@
-package io.github.sno.network.monitor.tcpip;
+package io.github.oineh.net.tcpip;
 
-import io.github.sno.network.monitor.tasks.TaskResultData;
+import io.github.oineh.net.task.TaskResultData;
 
 public enum NetStatus implements TaskResultData {
     TIMEOUT,

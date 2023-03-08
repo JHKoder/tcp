@@ -1,4 +1,4 @@
-package io.github.sno.network.monitor.tcpip;
+package io.github.oineh.net.tcpip;
 
 public enum NetType{
     TCP_URL,
