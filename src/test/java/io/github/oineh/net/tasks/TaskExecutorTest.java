@@ -1,16 +1,16 @@
-package io.github.sno.monitoring.tasks;
+package io.github.oineh.net.tasks;
 
-import io.github.sno.network.monitor.tasks.Task;
-import io.github.sno.network.monitor.tasks.TaskExecutor;
-import io.github.sno.network.monitor.tcpip.Host;
-import io.github.sno.network.monitor.tcpip.NetStatus;
-import io.github.sno.network.monitor.tcpip.NetTaskDator;
-import io.github.sno.network.monitor.tcpip.application.Http;
-import io.github.sno.network.monitor.tcpip.transport.Icmp;
+import io.github.oineh.net.task.TaskExecutor;
+import io.github.oineh.net.tcpip.Host;
+import io.github.oineh.net.tcpip.NetStatus;
+import io.github.oineh.net.tcpip.NetTaskDator;
+import io.github.oineh.net.tcpip.iso.IsoConnect;
+import io.github.oineh.net.tcpip.iso.application.Http;
+import io.github.oineh.net.tcpip.iso.transport.Icmp;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -25,13 +25,13 @@ public class TaskExecutorTest {
         Icmp icmp1 = new Icmp( Host.from("127.0.0.1"));
         Icmp icmp2 = new Icmp(Host.from("127.0.0.2"));
 
-        HashMap<Task,NetTaskDator> result = TaskExecutor.async(
+        ConcurrentHashMap<IsoConnect, NetTaskDator> result = TaskExecutor.async(
                 http,icmp1,icmp2
         );
 
         assertAll(() -> assertThat(result.size()).isEqualTo(3),
                 () -> assertEquals(result.get(http),NetStatus.OK),
                 () -> assertEquals(result.get(icmp1),NetStatus.OK),
-                () -> assertEquals(result.get(icmp2),NetStatus.TIMEOUT));
+                () -> assertEquals(result.get(icmp2), NetStatus.TIMEOUT));
     }
 }
