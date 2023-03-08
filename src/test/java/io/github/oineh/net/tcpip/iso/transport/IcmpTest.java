@@ -1,8 +1,7 @@
-package io.github.sno.monitoring.tcpip.transport;
+package io.github.oineh.net.tcpip.iso.transport;
 
-import io.github.sno.network.monitor.tcpip.Host;
-import io.github.sno.network.monitor.tcpip.NetStatus;
-import io.github.sno.network.monitor.tcpip.transport.Icmp;
+import io.github.oineh.net.tcpip.Host;
+import io.github.oineh.net.tcpip.NetStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class IcmpTest {
 
     @Test
-    void 연결() {
+    void 연결확인() {
         Host host = Host.from("127.0.0.1");
         Icmp icmp = new Icmp(host);
 
-        NetStatus status = icmp.connect();
+        NetStatus status = icmp.connectStatus();
 
         assertThat(status.name()).isEqualTo(NetStatus.OK.name());
     }
