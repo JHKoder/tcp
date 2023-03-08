@@ -9,7 +9,7 @@
 
 ---
 
-![](uml.png)
+![](uml2.png)
 
 ## 내부 기능
 - ![HTTP(GET)](https://img.shields.io/badge/HTTP(GET)-green)
